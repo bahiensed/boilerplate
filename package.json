@@ -1,0 +1,30 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "Just a simple Node.js,Express & TypeScript boilerplate",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "jest",
+    "dev": "tsx --env-file=.env ./src/index.ts",
+    "watch": "tsx --env-file=.env --watch ./src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahiensed/boilerplate.git"
+  },
+  "keywords": [
+    "boilerplate"
+  ],
+  "author": "@bahiensed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahiensed/boilerplate/issues"
+  },
+  "homepage": "https://github.com/bahiensed/boilerplate#readme",
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
