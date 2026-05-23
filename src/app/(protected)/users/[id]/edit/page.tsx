@@ -5,12 +5,13 @@ import { getUserById } from '@/queries/user.queries'
 import { EditUserForm } from '@/components/users/edit-user-form'
 import { Undo2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 
 type Props = {
   params: Promise<{ id: string }>
 }
 
-export default async function EditUser({ params }: Props) {
+export default async function EditUserPage({ params }: Props) {
   const { id } = await params
   const user = await getUserById(id)
 
@@ -18,10 +19,26 @@ export default async function EditUser({ params }: Props) {
 
   return (
     <>
-      <div className="flex justify-between">
-        <h1 className="font-extrabold mb-6 scroll-m-20 text-4xl text-balance tracking-tight">
-          Edit user
-        </h1>
+      <div className="flex items-start justify-between min-h-15 lg:min-h-10">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/users">Users</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href={`/users/${id}`}>{user.firstName}</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Edit</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
         <Button asChild variant="ghost">
           <Link href={`/users/${id}`}>
@@ -30,6 +47,10 @@ export default async function EditUser({ params }: Props) {
           </Link>
         </Button>
       </div>
+
+      <h1 className="font-extrabold mb-6 scroll-m-20 text-4xl text-balance tracking-tight">
+        Edit user
+      </h1>
 
       <EditUserForm
         id={id}
