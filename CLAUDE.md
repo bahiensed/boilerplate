@@ -1,3 +1,5 @@
+@AGENTS.md
+
 STACK:
 Runtime
   Node.js 24.15.0 LTS
