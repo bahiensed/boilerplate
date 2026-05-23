@@ -1,9 +1,14 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getUserById } from '@/queries/user.queries'
 import { PenSquare, Undo2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
+
+export const metadata: Metadata = {
+  title: 'Boilerplate | User',
+}
 
 type Props = {
   params: Promise<{ id: string }>

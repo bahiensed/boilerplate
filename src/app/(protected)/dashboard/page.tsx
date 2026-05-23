@@ -16,7 +16,7 @@ import { ChartRadialStacked } from '@/components/charts/radial-chart-stacked'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from '@/components/ui/breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'Dashboard',
+  title: 'Boilerplate | Dashboard',
 }
 
 export default function Dashboard() {

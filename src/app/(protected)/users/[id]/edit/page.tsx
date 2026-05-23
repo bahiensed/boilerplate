@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { formSchema } from '@/schemas/user.schema'
@@ -6,6 +7,10 @@ import { EditUserForm } from '@/components/users/edit-user-form'
 import { Undo2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
+
+export const metadata: Metadata = {
+  title: 'Boilerplate | Edit User',
+}
 
 type Props = {
   params: Promise<{ id: string }>

@@ -1,8 +1,13 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { NewUserForm } from '@/components/users/new-user-form'
 import { Undo2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
+
+export const metadata: Metadata = {
+  title: 'Boilerplate | New User',
+}
 
 export default function NewUserPage() {
   return (
