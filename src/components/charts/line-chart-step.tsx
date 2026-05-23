@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/chart"
 import { chartData } from "@/data/chart-data"
 
-export const description = "A line chart"
+export const description = "A line chart with step"
 
 const chartConfig = {
   desktop: {
@@ -28,11 +28,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartLineDefault() {
+export function ChartLineStep() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
+        <CardTitle>Line Chart - Step</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -63,7 +63,7 @@ export function ChartLineDefault() {
             />
             <Line
               dataKey="desktop"
-              type="natural"
+              type="step"
               stroke="var(--color-desktop)"
               strokeWidth={2}
               dot={false}

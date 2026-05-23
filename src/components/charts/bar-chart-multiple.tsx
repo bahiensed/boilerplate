@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {
   Card,
@@ -19,38 +19,35 @@ import {
 } from "@/components/ui/chart"
 import { chartData } from "@/data/chart-data"
 
-export const description = "A line chart"
+export const description = "A multiple bar chart"
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "var(--chart-1)",
   },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+  },
 } satisfies ChartConfig
 
-export function ChartLineDefault() {
+export function ChartBarMultiple() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
+        <CardTitle>Bar Chart - Multiple</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
+          <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
               tickLine={false}
+              tickMargin={10}
               axisLine={false}
-              tickMargin={8}
               minTickGap={32}
               tickFormatter={(value) => {
                 const date = new Date(value)
@@ -59,16 +56,11 @@ export function ChartLineDefault() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+          </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">

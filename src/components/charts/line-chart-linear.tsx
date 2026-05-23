@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/chart"
 import { chartData } from "@/data/chart-data"
 
-export const description = "A line chart"
+export const description = "A linear line chart"
 
 const chartConfig = {
   desktop: {
@@ -28,11 +28,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartLineDefault() {
+export function ChartLineLinear() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
+        <CardTitle>Line Chart - Linear</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -63,7 +63,7 @@ export function ChartLineDefault() {
             />
             <Line
               dataKey="desktop"
-              type="natural"
+              type="linear"
               stroke="var(--color-desktop)"
               strokeWidth={2}
               dot={false}

@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/chart"
 import { chartData } from "@/data/chart-data"
 
-export const description = "A line chart"
+export const description = "A horizontal bar chart"
 
 const chartConfig = {
   desktop: {
@@ -28,29 +28,30 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartLineDefault() {
+export function ChartBarHorizontal() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
+        <CardTitle>Bar Chart - Horizontal</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <LineChart
+          <BarChart
             accessibilityLayer
             data={chartData}
+            layout="vertical"
             margin={{
-              left: 12,
-              right: 12,
+              left: -20,
             }}
           >
-            <CartesianGrid vertical={false} />
-            <XAxis
+            <XAxis type="number" dataKey="desktop" hide />
+            <YAxis
               dataKey="date"
+              type="category"
               tickLine={false}
+              tickMargin={10}
               axisLine={false}
-              tickMargin={8}
               minTickGap={32}
               tickFormatter={(value) => {
                 const date = new Date(value)
@@ -61,14 +62,8 @@ export function ChartLineDefault() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
+          </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
